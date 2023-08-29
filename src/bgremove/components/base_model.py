@@ -10,6 +10,12 @@ from bgremove.entity.config_entity import PrepareBaseModelConfig
 import tensorflow as tf
 from tensorflow.keras.layers import Input, Conv2D, BatchNormalization, Activation, MaxPool2D, UpSampling2D, Concatenate, Add
 
+############################################################################
+# 
+# Model Class The Fully MOdel Archietectur
+#
+################################################################################
+
 class PrepareBaseModel:
     def __init__(self, config: PrepareBaseModelConfig):
         self.config = config

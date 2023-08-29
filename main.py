@@ -9,7 +9,7 @@ from bgremove.pipeline.stage_02_base_model import BaseModelPrepPipeline
 ##################################################
 # Data Ingestion Stage Pipeline
 #####################################################
-STAGE_NAME = 'Data Ingestion stage'
+STAGE_NAME = 'DATA INGESTION STAGE'
 try:
     logger.info(f'===================================>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> stage {STAGE_NAME} started <<<<<<<<<<<<<<<<<<<================================================')
     data_ingestion = DataIngestionPipeline()
