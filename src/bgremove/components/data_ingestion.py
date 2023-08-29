@@ -5,6 +5,7 @@ import os
 import urllib.request as request
 import zipfile
 import gdown
+from pathlib import Path
 from bgremove import logger
 from bgremove.utils.common import get_size
 from bgremove.entity.config_entity import DataIngestionConfig
