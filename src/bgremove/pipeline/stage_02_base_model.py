@@ -29,6 +29,7 @@ class BaseModelPrepPipeline:
         model = prepare_base_model.get_base_model()
         model.summary()
         model.save(save_model_path)
+        logger.info(f'========================== Saving MOdel where {save_model_path} =====================>')
 
 
 if __name__ == '__main__':
