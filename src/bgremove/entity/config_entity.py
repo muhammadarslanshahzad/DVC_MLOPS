@@ -30,3 +30,19 @@ class PrepareBaseModelConfig:
     params_learning_rate:float
     params_weights:str
     params_classes:int
+
+
+
+##############################################################
+# 
+#   Call Backs
+# 
+# ##########################################################################
+
+
+@dataclass(frozen=True)
+class PrepareCallBackConfig:
+    root_dir:Path
+    tensorboard_root_log_dir:Path
+    checkpoint_model_filepath:Path
+    csv_filePath:Path

@@ -4,7 +4,7 @@
 
 from bgremove.constants import *
 from bgremove.utils.common import read_yaml, create_directories
-from bgremove.entity.config_entity import (DataIngestionConfig, PrepareBaseModelConfig)
+from bgremove.entity.config_entity import (DataIngestionConfig, PrepareBaseModelConfig, PrepareCallBackConfig)
 
 ########################################
 # 
@@ -23,11 +23,11 @@ class ConfigurationManager:
         create_directories([self.config.artifacts_root])
 
 
-#####################
+#############################################################
 # 
-# Data Ingestion
+# Data Ingestion Config
 #
-#####################
+#############################################################
     def get_data_ingestion_config(self)-> DataIngestionConfig:
         config = self.config.data_ingestion
         create_directories([config.root_dir])
@@ -42,7 +42,7 @@ class ConfigurationManager:
 
 #############################################################
 # 
-#   MODELING
+#   MODELING Config
 # 
 #  #################################################################
     def get_prepare_base_model_config(self) -> PrepareBaseModelConfig:
@@ -61,3 +61,26 @@ class ConfigurationManager:
         )
 
         return prepare_base_model_config
+    
+
+##########################################################################
+# 
+# Call Backs Config
+# 
+##########################################################################
+    def get_call_backs_config(self)->PrepareCallBackConfig:
+        config = self.config.prepare_callbacks
+        model_ckpt_dir = os.path.dirname(config.checkpoint_model_filepath)
+        create_directories([
+            Path(model_ckpt_dir),
+            Path(config.tensorboard_root_log_dir)
+        ])
+
+        prepare_callback_config = PrepareCallBackConfig(
+            root_dir = Path(config.root_dir),
+            tensorboard_root_log_dir = Path(config.tensorboard_root_log_dir),
+            checkpoint_model_filepath = Path(config.checkpoint_model_filepath),
+            csv_filePath = Path(config.csv_path)
+        )
+
+        return prepare_callback_config
