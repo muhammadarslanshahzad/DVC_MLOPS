@@ -9,7 +9,7 @@ from bgremove.utils.common import read_yaml
 from bgremove.entity.config_entity import PrepareBaseModelConfig
 import tensorflow as tf
 from tensorflow.keras.layers import Input, Conv2D, BatchNormalization, Activation, MaxPool2D, UpSampling2D, Concatenate, Add
-
+from tensorflow.keras.optimizers import Adam
 ############################################################################
 # 
 # Model Class The Fully MOdel Archietectur
@@ -170,8 +170,8 @@ class PrepareBaseModel:
     def get_base_model(self, params_filepath = PARAMS_FILE_PATH):
         params_file_path = params_filepath
         params = read_yaml(params_file_path)
-        model = self.u2net(params.IMAGE_SIZE, params.OUT_CH, params_INT_CH, num_classes=params.CLASSES)
-        model.compile(loss="binary_crossentropy", optimizer=ADAM(params.LEARNING_RATE))
+        model = self.u2net(params.IMAGE_SIZE, params.OUT_CH, params.INT_CH, num_classes=params.CLASSES)
+        model.compile(loss="binary_crossentropy", optimizer=Adam(params.LEARNING_RATE))
         return model
     
     
