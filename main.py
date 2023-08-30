@@ -5,6 +5,7 @@
 from bgremove import logger
 from bgremove.pipeline.stage_01_data_ingestion import DataIngestionPipeline
 from bgremove.pipeline.stage_02_base_model import BaseModelPrepPipeline
+from bgremove.pipeline.stage_03_training import TrainingPipeline
 
 ##################################################
 # Data Ingestion Stage Pipeline
@@ -35,3 +36,21 @@ except Exception as e:
     logger.exception(e)
     raise e
 
+
+#######################################################################################################################
+# Trainig Pipeline
+########################################################################################################################
+
+STAGE_NAME = 'MODEL TRAINING STAGE'
+
+try:
+    logger.info(f'=====================================>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {STAGE_NAME} started <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<================================================')
+    training = TrainingPipeline()
+    training.main()
+    logger.info(f'=============================================>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {STAGE_NAME} completed <<<<<<<<<<<<<<<<<<<<<<<<<<<==============================================\n\n\n x=============================================================================================================================================x')
+    
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+    
