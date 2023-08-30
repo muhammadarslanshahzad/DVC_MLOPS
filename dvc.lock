@@ -1,0 +1,67 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/bgremove/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 228241687d8f35f2460b90cf61ca24e7
+      size: 968
+    - path: src/bgremove/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: b9e0dc4bf8c074c5b7dd3466e35bc31a
+      size: 1773
+    outs:
+    - path: artifacts/data_ingestion/
+      hash: md5
+      md5: d751713988987e9331980363e24189ce.dir
+      size: 0
+      nfiles: 0
+  prepare_base_model:
+    cmd: python src/bgremove/pipeline/stage_02_base_model.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 228241687d8f35f2460b90cf61ca24e7
+      size: 968
+    - path: src/bgremove/pipeline/stage_02_base_model.py
+      hash: md5
+      md5: 589175ca1bc529f736988957f9c61e5e
+      size: 1896
+    params:
+      params.yaml:
+        CLASSES: 1
+        IMAGE_SIZE:
+        - 512
+        - 512
+        - 3
+        INT_CH:
+        - 32
+        - 32
+        - 64
+        - 128
+        - 256
+        - 256
+        - 256
+        - 128
+        - 64
+        - 32
+        - 16
+        OUT_CH:
+        - 64
+        - 128
+        - 256
+        - 512
+        - 512
+        - 512
+        - 512
+        - 256
+        - 128
+        - 64
+        - 64
+    outs:
+    - path: artifacts/prepare_base_model/base_model.h5
+      hash: md5
+      md5: 8b7ee611c3550e24c28cb85ef4d74b9e
+      size: 177380624
+      isexec: true
