@@ -21,8 +21,8 @@ class DataIngestionPipeline:
         data_ingestion_config = config.get_data_ingestion_config()
         data_ingestion = DataIngestion(config= data_ingestion_config)
         # data_ingestion.download_file()
-        # data_ingestion.extract_zip_file()
-        print("\n\n\n\n\n the data file will download here ====================>>>>>>>>>>>>\n\n\n\n\n\n")
+        data_ingestion.extract_zip_file()
+        # print("\n\n\n\n\n the data file will download here ====================>>>>>>>>>>>>\n\n\n\n\n\n")
 
 
 
