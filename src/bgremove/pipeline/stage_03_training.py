@@ -14,12 +14,15 @@ from bgremove.components.training import Training
 ########################################################################
 # Global Vairables
 # #######################################################################
+
 STAGE_NAME = "Training MODEL STAGE"
+
 
 config = read_yaml(CONFIG_FILE_PATH)
 params = read_yaml(PARAMS_FILE_PATH)
 save_model_path = config.prepare_base_model.base_model_path
 data_set_path = config.data_ingestion.unzip_data_dir
+
 batach_size = params.BATCH_SIZE
 
 ###########################################################################

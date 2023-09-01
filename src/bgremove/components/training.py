@@ -32,7 +32,7 @@ class Training:
             self.config.base_model_path
         )
         return self.model
-    
+
     def load_data(self, path):
         train_x = sorted(glob(os.path.join(path, "train", "blurred_image", "*.jpg")))
         train_y = sorted(glob(os.path.join(path, "train", "mask", "*.png")))

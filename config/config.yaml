@@ -5,7 +5,10 @@ data_ingestion:
   source_URL: https://drive.google.com/u/0/uc?id=1LqUU7BZeiq8I3i5KxApdOJ2haXm-cEv1&export=download
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion/data
+<<<<<<< HEAD
   unzip_data_dir: artifacts/data_ingestion/data/P3M-10k
+=======
+>>>>>>> 5d41019a7b5c9fe7f8d35dc031c3284fe2db0b97
 
 prepare_base_model:
   root_dir: artifacts/prepare_base_model

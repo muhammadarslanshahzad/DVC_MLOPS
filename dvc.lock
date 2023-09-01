@@ -17,6 +17,7 @@ stages:
       md5: 26f0ce0d00254405a5d32b2f47d2b2aa.dir
       size: 6063760338
       nfiles: 21848
+
   prepare_base_model:
     cmd: python src/bgremove/pipeline/stage_02_base_model.py
     deps:
@@ -106,3 +107,4 @@ stages:
       hash: md5
       md5: 8e4247840cd3a86a2dd219a057b1002c
       size: 530360880
+      isexec: true
