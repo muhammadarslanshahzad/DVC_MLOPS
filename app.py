@@ -16,6 +16,21 @@ model_path = "assets/model/model.h5"
 output_path = "assets/results/"
 host = "172.16.2.231"
 port = 9000
+Token = ['oziapps_0c80afe9b4cbb72c8040a0c6fe57e570']
+
+
+#####################################################
+#  Auth Middleware logics
+# ###################################################
+def is_auth(route_function):
+    def wrapper(*args, **kwargs):
+        if request.headers.get('Authorization')== f"Bearer {Token[0]}":
+            return route_function(*args, **kwargs)
+        else:
+            return "Access Denied: Authentication required", 401  # Unauthorized status code
+    return wrapper
+
+
 
 ###########################################################
 # loading model & calling prediction pipeline
@@ -42,6 +57,7 @@ def home():
     return render_template('index.html')
 
 @app.route('/predict', methods=["GET","POST"])
+@is_auth            # middleware implement
 def prediction():
 
     req_image = request.files['image']
