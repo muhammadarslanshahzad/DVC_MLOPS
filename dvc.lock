@@ -91,7 +91,7 @@ stages:
     params:
       params.yaml:
         BATCH_SIZE: 8
-        EPOCHS: 2
+        EPOCHS: 20
         HEIGHT: 256
         LEARNING_RATE: 1e-05
         MIN_LR: 1e-07
@@ -99,11 +99,11 @@ stages:
         PATIENCE_REDUCE_LEARNING: 1
         RESTORE_BEST_WEIGHTS: true
         SAVE_BEST_ONLY: true
-        VERBOSE: 0
+        VERBOSE: 1
         WIDTH: 256
     outs:
     - path: artifacts/training/
       hash: md5
-      md5: 39ba8b09855746cbb77d31247ab504e8.dir
+      md5: 7fd324f9d1f8bf57171754df62d6f600.dir
       size: 530360880
       nfiles: 1

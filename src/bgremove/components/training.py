@@ -108,7 +108,8 @@ class Training:
             initial_epoch= params.INITIAL_EPOCHS,
             epochs=params.EPOCHS,
             validation_data= valid_data,
-            callbacks= callback_list
+            callbacks= callback_list,
+            verbose=params.VERBOSE
         )
         
         self.save_model(
