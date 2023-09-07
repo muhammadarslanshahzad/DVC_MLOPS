@@ -7,16 +7,20 @@
 import os
 import tensorflow as tf
 import time
-from bgremove.constants import PARAMS_FILE_PATH
+from bgremove.constants import *
 from bgremove.utils.common import read_yaml
 from bgremove.config.configuration import PrepareCallBackConfig
+import datetime
 
 params = read_yaml(PARAMS_FILE_PATH)
+config_path = read_yaml(CONFIG_FILE_PATH)
 
+# Get the current timestamp
+timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+
+chk_point_file_path =f'{config_path.prepare_callbacks.checkpoint_model_filepath}_{timestamp}.h5'
 ##########################################################
-# 
 # Call Back Class
-# 
 #########################################################
 
 class PrepareCallBacks:
@@ -35,7 +39,7 @@ class PrepareCallBacks:
     @property
     def _create_ckpt_callbacks(self):
             return tf.keras.callbacks.ModelCheckpoint(
-                filepath=str(self.config.checkpoint_model_filepath),
+                filepath=chk_point_file_path,
                 verbose=params.VERBOSE,
                 save_best_only=params.SAVE_BEST_ONLY)
     

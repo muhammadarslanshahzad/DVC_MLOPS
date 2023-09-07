@@ -6,7 +6,7 @@ import cv2
 from glob import glob
 import numpy as np
 import os
-
+import datetime
 from bgremove.constants import *
 from bgremove.utils.common import read_yaml
 from bgremove.entity.config_entity import TrainingConfig
@@ -16,10 +16,15 @@ from bgremove.entity.config_entity import TrainingConfig
 # Global Varieables
 # ##########################################################################################
 params = read_yaml(PARAMS_FILE_PATH)
+config_path = read_yaml(CONFIG_FILE_PATH)
 H = params.HEIGHT
 W = params.WIDTH
 
 
+# Get the current timestamp
+timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+
+save_model_file_path =f'{config_path.training.trained_model_path}_{timestamp}.h5'
 ###################################################################################################
 # Class Training 
 ######################################################################################################
@@ -100,14 +105,15 @@ class Training:
     def train(self, trained_ds, valid_data, callback_list):
         self.model.fit(
             trained_ds,
+            initial_epoch= params.INITIAL_EPOCHS,
             epochs=params.EPOCHS,
             validation_data= valid_data,
             callbacks= callback_list
         )
         
         self.save_model(
-            path = self.config.trained_model_path,
+            path = save_model_file_path,
             model= self.model
-        )
+            )
 
         

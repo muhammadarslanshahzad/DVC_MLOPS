@@ -42,4 +42,4 @@ stages:
       - PATIENCE_EARLY_STOPPING
       - PATIENCE_REDUCE_LEARNING
     outs:
-      - artifacts/training/model.h5
+      - artifacts/training/
