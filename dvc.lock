@@ -5,8 +5,8 @@ stages:
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: 27e3c993b33e2cf09809d2b99f20f8ae
-      size: 1025
+      md5: b36f7e43cfd5cc26fb45b9d9c21cbfbc
+      size: 910
     - path: src/bgremove/pipeline/stage_01_data_ingestion.py
       hash: md5
       md5: b1eb7db12c235952663f284b32d63f2a
@@ -17,14 +17,13 @@ stages:
       md5: 26f0ce0d00254405a5d32b2f47d2b2aa.dir
       size: 6063760338
       nfiles: 21848
-
   prepare_base_model:
     cmd: python src/bgremove/pipeline/stage_02_base_model.py
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: 27e3c993b33e2cf09809d2b99f20f8ae
-      size: 1025
+      md5: b36f7e43cfd5cc26fb45b9d9c21cbfbc
+      size: 910
     - path: src/bgremove/pipeline/stage_02_base_model.py
       hash: md5
       md5: 589175ca1bc529f736988957f9c61e5e
@@ -63,7 +62,7 @@ stages:
     outs:
     - path: artifacts/prepare_base_model/base_model.h5
       hash: md5
-      md5: 908a9a1d9dfc38d3d51759443770a6bf
+      md5: ffca06c163627a737cdda868b675675b
       size: 177419728
   training:
     cmd: python src/bgremove/pipeline/stage_03_training.py
@@ -75,36 +74,36 @@ stages:
       nfiles: 21848
     - path: artifacts/prepare_base_model/base_model.h5
       hash: md5
-      md5: 908a9a1d9dfc38d3d51759443770a6bf
+      md5: ffca06c163627a737cdda868b675675b
       size: 177419728
     - path: config/config.yaml
       hash: md5
-      md5: 27e3c993b33e2cf09809d2b99f20f8ae
-      size: 1025
+      md5: b36f7e43cfd5cc26fb45b9d9c21cbfbc
+      size: 910
     - path: src/bgremove/components/prepare_callbacks.py
       hash: md5
-      md5: 018d709c0640b5a4adf3231a59890ad3
-      size: 2203
+      md5: 3b20f11b829624692f11b85689d98c08
+      size: 2408
     - path: src/bgremove/pipeline/stage_03_training.py
       hash: md5
-      md5: 1f11407fb8b82fbccd3b187270bf7c7b
-      size: 2573
+      md5: 305cdc73c02c82e4d350593718a9d62a
+      size: 2579
     params:
       params.yaml:
         BATCH_SIZE: 8
         EPOCHS: 2
         HEIGHT: 256
-        LEARNING_RATE: 0.01
-        MIN_LR: 1e-06
-        PATIENCE_EARLY_STOPPING: 10
-        PATIENCE_REDUCE_LEARNING: 5
+        LEARNING_RATE: 1e-05
+        MIN_LR: 1e-07
+        PATIENCE_EARLY_STOPPING: 50
+        PATIENCE_REDUCE_LEARNING: 1
         RESTORE_BEST_WEIGHTS: true
         SAVE_BEST_ONLY: true
         VERBOSE: 0
         WIDTH: 256
     outs:
-    - path: artifacts/training/model.h5
+    - path: artifacts/training/
       hash: md5
-      md5: 8e4247840cd3a86a2dd219a057b1002c
+      md5: 39ba8b09855746cbb77d31247ab504e8.dir
       size: 530360880
-      isexec: true
+      nfiles: 1
